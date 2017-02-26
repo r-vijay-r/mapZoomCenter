@@ -7,3 +7,7 @@
       <sebm-google-map-marker [latitude]="latLngToCheck.lat" [longitude]="latLngToCheck.lng" [label]="'C'"></sebm-google-map-marker>
       <sebm-google-map-marker *ngFor="let item of mapLatLng" [latitude]="item.lat" [longitude]="item.lng"></sebm-google-map-marker>
 </sebm-google-map>
+<div>
+	<button (click)="getClosest()">Closest Only</button>
+	<button (click)="getAllPoints()">All</button>
+</div>
