@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -12,7 +12,10 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB9wzLbIvyA-hrC2YQL-SEC_-PGJw1d8Rs'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
