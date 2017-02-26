@@ -56,9 +56,11 @@ export class AppComponent {
 		for (var i = 1; i<=points.length  ; i++) {
 			var newMap=this.getMaxZoomAndCenter(this.latLngToCheck,points[i-1]);
 			this.map=(this.map.zoom>=newMap.zoom)?dec(newMap):this.map;
+			this.map.lat=(this.map.lat<newMap.lat)?newMap.lat:this.map.lat;
+			this.map.lng=(this.map.lng<newMap.lng)?newMap.lng:this.map.lng;
 			console.log("Element : ",i,'\n'," Current Map object : ",this.map,'\n'," New Map object : ",newMap,'\n'," When compared with : ",points[i-1]);
-			this.map.lat=avg.lat;
-			this.map.lng=avg.lng;
+			//this.map.lat=avg.lat;
+			//this.map.lng=avg.lng;
 		}
 	}
 	minMapValues(points){
