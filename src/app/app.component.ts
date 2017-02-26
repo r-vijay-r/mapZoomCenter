@@ -29,7 +29,7 @@ export class AppComponent {
 		for (var i = 1; i<=points.length  ; i++) {
 			var newMap=this.getZoomAndCenter(this.latLngToCheck,points[i-1]);
 			this.map=(this.map.zoom<newMap.zoom)?newMap:this.map;
-			console.log(i,this.map,points[i-1]);
+			console.log(i,newMap,points[i-1]);
 		}
 	}
 	zoom=8;
@@ -37,7 +37,7 @@ export class AppComponent {
 		var lat=(position1.lat+position2.lat)/2;
 		var lng=(position1.lng+position2.lng)/2;
 	    var WORLD_DIM = { height: 256, width: 256 };
-	    var ZOOM_MIN = 21;
+	    var ZOOM_MIN = 22;
 	    function latRad(lat) {
 	        var sin = Math.sin(lat * Math.PI / 180);
 	        var radX2 = Math.log((1 + sin) / (1 - sin)) / 2;
@@ -51,7 +51,7 @@ export class AppComponent {
 	    var lngFraction = ((lngDiff < 0) ? (lngDiff + 360) : lngDiff) / 360;
 	    var latZoom = zoom(this.mapDim.height, WORLD_DIM.height, latFraction);
 	    var lngZoom = zoom(this.mapDim.width, WORLD_DIM.width, lngFraction);
-	    return {zoom:Math.min(latZoom, lngZoom, ZOOM_MIN),lat,lng};
+	    return {zoom:Math.max(Math.min(latZoom, ZOOM_MIN), Math.min(lngZoom, ZOOM_MIN)),lat,lng};
 	}
 
 }
